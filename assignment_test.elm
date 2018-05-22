@@ -6,10 +6,6 @@ import List
 
 
 --VIew
-view:model
-
-
-
 checkNumberExist =
     let
       myList = [1,2,3,4,5]
