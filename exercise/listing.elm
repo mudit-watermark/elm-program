@@ -28,7 +28,7 @@ type alias Model = {
     }
 ---init
 init: (Model , Cmd Msg)
-init = (Model  [] , Cmd.none )
+init = (Model  [] , getMoreData )
 
 
 --View
@@ -41,40 +41,20 @@ view model=
               ]
               ,div[]
                   [
-                  ul[][
-                      li[][
-                          p[][
-                            b[][text "Api Data: "]
-                            ,text (toString(model.apiData))
-                          ]
-                      ]
-                      -- ,li[][
-                      --       p[][
-                      --         b[][text "User ID: "]
-                      --         ,text (toString(model.apiData.userId))
-                      --       ]
-                      --   ]
-                      --   ,li[][
-                      --       p[][
-                      --         b[][text "Title: "]
-                      --         ,text model.apiData.title
-                      --       ]
-                      --   ]
-                      --   ,li[][
-                      --       p[][
-                      --         b[][text "Body: "]
-                      --         ,text model.apiData.body
-                      --       ]
-                      --   ]
-                        ,li[][
-                            p[][
-                              --input[ placeholder "Enter User Id here", value (toString(model.findId)),  onInput UpdateFindId ][]
-                              button [onClick FetchUserDetails ][text "Get Info"]
-                             ]
-                        ]
-                    ]
+                  model.apiData
+                  |> List.map (\x -> getHtml x)
+                  |> table[style [("cellpadding", "5") , ("width", "100%"), ("border", "1px solid blue")]]
                 ]
           ]
+
+
+getHtml x =
+    tr[][
+      td[][text <| toString x.id]
+      ,td[][text <| toString x.userId]
+      ,td[][text <|  x.title]
+      ,td[][text <|  x.body]
+    ]
 
 --- type MSG
 type Msg = FetchUserDetails
