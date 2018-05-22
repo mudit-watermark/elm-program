@@ -1,17 +1,9 @@
 import Html exposing (text)
 import List
 
-
-
-
-
---VIew
-checkNumberExist =
-    let
-      myList = [1,2,3,4,5]
-    in
-     List.sum  myList
-     |>toString
+checkNumberExist number =
+      String.split  "" number
+      |>toString
 
 main =
-  text (checkNumberExist)
+  text (checkNumberExist "123456")
