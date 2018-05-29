@@ -150,6 +150,19 @@ getToDoList model  =
               else
                   saveToDoList model
 
+
+-----------------------------------------------
+-- saveToDoList
+----------------------------------------------
+saveToDoList:Model -> List TodoOutPut
+saveToDoList model =
+  {
+  uid = (Maybe.withDefault  (TodoOutPut 0 "" "")  (List.head model.todoOutPut)).uid+1
+  ,title=model.title
+  ,description=model.description
+  }::model.todoOutPut
+
+  
 -----------------------------------------------
 -- editData
 
@@ -172,17 +185,6 @@ updateToDo  model todo_output =
        { todo_output | title=model.title, description=model.description  }
   else
         todo_output
-
------------------------------------------------
--- saveToDoList
-----------------------------------------------
-saveToDoList:Model -> List TodoOutPut
-saveToDoList model =
-  {
-  uid = (Maybe.withDefault  (TodoOutPut 0 "" "")  (List.head model.todoOutPut)).uid+1
-  ,title=model.title
-  ,description=model.description
-  }::model.todoOutPut
 
 -----------------------------------------------
 -- deleteFromToDo
