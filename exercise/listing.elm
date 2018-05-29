@@ -8,7 +8,7 @@ import List
 --- Define Main
 main =
       Html.program{
-      init = init
+      init = init 
       ,view = view
       ,update = update
       ,subscriptions = subscriptions
