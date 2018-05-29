@@ -1,11 +1,8 @@
 import Html exposing (..)
 import Html.Events exposing (..)
 import Html.Attributes exposing (..)
-import Http
-import Json.Decode as Decode
-import Json.Decode.Pipeline  exposing (decode, required, optional)
 import List
-import Task
+
 --- Define Main
 main =
       Html.program{
@@ -37,7 +34,6 @@ type alias Model = {
 
 ---init
 init: (Model , Cmd Msg)
---init = (Model 0 "" "" [], Task.succeed SaveToDo  |> Task.perform identity )
 init = (Model 0 "" "" [] , Cmd.none )
 
 
@@ -96,7 +92,8 @@ inputDesignTr =
     ( "width", "100%" )
     ,( "padding", "7px" )
   ]
-
+--------------------------------------
+gettodo:TodoOutPut  ->  Html Msg
 gettodo x =
   li[][
       -- span[inputDesignTr][ text(toString(x.uid)) ]
@@ -150,6 +147,19 @@ getToDoList model  =
               else
                   saveToDoList model
 
+
+-----------------------------------------------
+-- saveToDoList
+----------------------------------------------
+saveToDoList:Model -> List TodoOutPut
+saveToDoList model =
+  {
+  uid = (Maybe.withDefault  (TodoOutPut 0 "" "")  (List.head model.todoOutPut)).uid+1
+  ,title=model.title
+  ,description=model.description
+  }::model.todoOutPut
+
+
 -----------------------------------------------
 -- editData
 
@@ -172,17 +182,6 @@ updateToDo  model todo_output =
        { todo_output | title=model.title, description=model.description  }
   else
         todo_output
-
------------------------------------------------
--- saveToDoList
-----------------------------------------------
-saveToDoList:Model -> List TodoOutPut
-saveToDoList model =
-  {
-  uid = (Maybe.withDefault  (TodoOutPut 0 "" "")  (List.head model.todoOutPut)).uid+1
-  ,title=model.title
-  ,description=model.description
-  }::model.todoOutPut
 
 -----------------------------------------------
 -- deleteFromToDo
