@@ -20,7 +20,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="<%= login_path(@conn , :index) %>">Login</a></li>
             <li><a href="<%= event_path(@conn , :list) %>">Events</a></li>
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <%# <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li> %>
           </ul>
         </nav>
         <%# <span class="logo"></span> %>
