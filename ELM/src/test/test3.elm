@@ -5,7 +5,8 @@ import Http
 import Json.Decode as Decode
 import Json.Decode.Pipeline  exposing (decode, required, optional)
 import List
-import Regex
+
+
 --- Define Main
 main =
       Html.program{
