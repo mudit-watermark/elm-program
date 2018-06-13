@@ -3,9 +3,8 @@ defmodule FireStarter.EventQueries do
 
   alias FireStarter.{Repo, Events}
 
-
   def any do
-    Repo.one(from e in Events, select: count(e.id)) != 0
+    Repo.one(from(e in Events, select: count(e.id))) != 0
   end
 
   def get_all do
@@ -29,4 +28,13 @@ defmodule FireStarter.EventQueries do
   def create(event) do
     Repo.insert(event)
   end
+
+  def decrease_quantity(id , quantity) do
+    event = Repo.get!(Events, id)
+    changes = Ecto.Changeset.change event, quantity_available:
+    event.quantity_available - String.to_integer(quantity)
+    Repo.update changes
+  end
+
+
 end

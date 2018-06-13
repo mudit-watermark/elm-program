@@ -5,6 +5,7 @@ defmodule FireStarter.Events do
   schema "events" do
     field :title, :string
     field :description, :string
+    field :quantity_available, :integer, default: 25
     timestamps()
   end
 

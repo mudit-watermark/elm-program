@@ -23,12 +23,13 @@ defmodule FireStarter.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "events/", EventController, :list
-    get "events/new", EventController, :create
-     post "events/new", EventController, :add
-     get "events/:id", EventController, :show
+    get "/events/", EventController, :list
+    get "/events/new", EventController, :create
+    post "/events/new", EventController, :add
+    get "/events/:id", EventController, :show
     get "/login", LoginController, :index
     post "/login", LoginController, :login
+    post "/events/:id/reserve", EventController, :reserve
   end
 
   # scope "events/", FireStarter do
