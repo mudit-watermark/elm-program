@@ -39,7 +39,8 @@ defmodule FireStarter.EventController do
 
 
  def reserve(conn , %{"id" => id, "reservation" => %{"quantity" => quantity}} ) do
-    FireStarter.EventQueries.decrease_quantity(id , quantity)
+    {:ok , event} = FireStarter.EventQueries.decrease_quantity(id , quantity)
+    FireStarter.EventChannel.send_update(event)
     redirect conn, to: event_path(conn, :show, id)
  end
 

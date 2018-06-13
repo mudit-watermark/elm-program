@@ -9,3 +9,4 @@
          </div>
          <%= submit "Reserve" , class: "btn btn-primary pull-right" %>
 <% end %>
+<span id="id" data-id="<%= @event.id %>"></span>

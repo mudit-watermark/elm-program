@@ -3,6 +3,7 @@ defmodule FireStarter.UserSocket do
 
   ## Channels
   # channel "room:*", FireStarter.RoomChannel
+  channel "event:*", FireStarter.EventChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

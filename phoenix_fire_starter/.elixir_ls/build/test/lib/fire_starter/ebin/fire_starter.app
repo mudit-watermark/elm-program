@@ -7,6 +7,7 @@
                         'Elixir.FireStarter.Endpoint',
                         'Elixir.FireStarter.ErrorHelpers',
                         'Elixir.FireStarter.ErrorView',
+                        'Elixir.FireStarter.EventChannel',
                         'Elixir.FireStarter.EventController',
                         'Elixir.FireStarter.EventQueries',
                         'Elixir.FireStarter.EventView',
