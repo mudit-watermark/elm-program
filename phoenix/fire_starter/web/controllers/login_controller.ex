@@ -13,5 +13,4 @@ defmodule FireStarter.LoginController do
     |> redirect(to: "/")
 
   end
-
 end
